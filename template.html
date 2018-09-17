@@ -1,0 +1,51 @@
+<html>
+<head>
+<style type="text/css">
+th{
+  border-bottom: 2px solid black;
+  font-size: 12px;
+  text-align: center;
+}
+td{
+  font-size: 9px;
+  border-bottom : 1px solid black;
+  text-align: center;
+  padding: 2px 2px 2px 2px;
+}
+
+</style>
+</head>
+<body>
+<h2>Meds Not Mirrored Report</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th width="10%">Device</th>
+      <th width="30%">MedDescription</th>
+      <th width="10%">MedID</th>
+      <th width="10%">CurrentQuantity</th>
+      <th width="8%">Min</th>
+      <th width="8%">Max</th>
+      <th width="10%">DaysUnused</th>
+      <th width="12%">ActiveOrders</th>
+    </tr>
+  </thead>
+  	<tbody>
+      {% for index, row in df.iterrows() %}
+  		<tr>
+    		<td>{{index}}</td>
+    		<td>{{ row.get('MedDescription') }}</td>
+    		<td>{{ row.get('MedID') }}</td>
+    		<td>{{ row.get('CurrentQuantity') }}</td>
+    		<td>{{ row.get('Min') }}</td>
+    		<td>{{ row.get('Max') }}</td>
+    		<td>{{ row.get('DaysUnused') }}</td>
+    		<td>{{ row.get('ActiveOrders') }}</td>
+  		</tr>
+      {% endfor %}
+  	</tbody>
+</table>
+
+</body>
+</html>
