@@ -7,7 +7,7 @@ from format import Mirror
 from format import GetResource
 
 def run_form():
-	with sg.FlexForm("Mirror Tool", auto_size_text=True) as form:
+	with sg.Window("Mirror Tool", auto_size_text=True) as form:
 		msg_elm = sg.Text('',  size = (40, 4) ,auto_size_text=True,font = ('Helvetica', 10))
 		file_in = sg.Input('Select csv file...')
 		form_rows= [
@@ -17,7 +17,7 @@ def run_form():
 			[sg.Submit(), sg.Cancel()]
 		]
 
-		form.LayoutAndRead(form_rows, non_blocking=True)
+		form.Layout(form_rows).Read().NonBlocking()
 
 		for i in range(0,100000000):
 			msg_elm.Update("Waiting for file to be selected")
